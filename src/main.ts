@@ -5,6 +5,7 @@ import { renderCalendar } from "./calendar";
 import { getHolidays } from "./holidays";
 import { fetchWeather, shouldRefreshWeather, initWeatherWithGeolocation } from "./weather";
 import { initAudio, unlockAudio, checkChime } from "./chime";
+import { initTheme } from "./theme";
 
 let lastRenderedDate = "";
 
@@ -38,6 +39,7 @@ function renderAll(): void {
 }
 
 // Init
+initTheme();
 initAudio();
 initWeatherWithGeolocation();
 renderAll();

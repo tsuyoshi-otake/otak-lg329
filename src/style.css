@@ -4,13 +4,199 @@
   box-sizing: border-box;
 }
 
+/* ===== Theme Variables ===== */
+:root, [data-theme="midnight"] {
+  --bg: #080c15;
+  --bg-clock: linear-gradient(160deg, #0c1220 0%, #101828 100%);
+  --bg-weather: linear-gradient(160deg, #0a1018 0%, #0e1520 100%);
+  --text-bright: #ffffff;
+  --text-primary: #d0d8e8;
+  --text-mid: #a0b0cc;
+  --text-muted: #8898b4;
+  --text-dim: #7888a8;
+  --text-faint: #506888;
+  --text-other: #202838;
+  --accent-red: #ff6070;
+  --accent-blue: #5a9af5;
+  --accent-red-dim: #c06070;
+  --accent-blue-dim: #4878b8;
+  --accent-red-warm: #f07060;
+  --accent-blue-cool: #5090e0;
+  --today-bg: linear-gradient(135deg, #3060f0, #2040b0);
+  --today-shadow: rgba(48, 96, 240, 0.4);
+  --today-holiday-bg: linear-gradient(135deg, #e03858, #a82040);
+  --today-holiday-shadow: rgba(224, 56, 88, 0.4);
+  --today-forecast-bg: rgba(48, 96, 240, 0.1);
+  --today-forecast-border: rgba(48, 96, 240, 0.2);
+  --border: #1a2540;
+  --divider: linear-gradient(180deg, transparent 5%, #1e3050 30%, #305078 50%, #1e3050 70%, transparent 95%);
+  --card-bg: rgba(255, 255, 255, 0.025);
+  --time-glow: rgba(70, 120, 255, 0.15);
+  --chime-dim: #2a3a5a;
+  --chime-active: #5a9af5;
+  --chime-pulse: #8ab4ff;
+  --overlay-bg: rgba(8, 12, 21, 0.9);
+  --detail-color: #607090;
+  --precip-color: #4878b0;
+  --forecast-sun: #e06070;
+  --forecast-sat: #5090e0;
+}
+
+[data-theme="emerald"] {
+  --bg: #060f0a;
+  --bg-clock: linear-gradient(160deg, #081a10 0%, #0c2418 100%);
+  --bg-weather: linear-gradient(160deg, #061008 0%, #0a1810 100%);
+  --text-bright: #f0fff5;
+  --text-primary: #c8e8d8;
+  --text-mid: #90c0a8;
+  --text-muted: #78a890;
+  --text-dim: #608878;
+  --text-faint: #406858;
+  --text-other: #183028;
+  --accent-red: #ff7068;
+  --accent-blue: #50c898;
+  --accent-red-dim: #b86860;
+  --accent-blue-dim: #3890708;
+  --accent-red-warm: #e87060;
+  --accent-blue-cool: #40b888;
+  --today-bg: linear-gradient(135deg, #20a060, #108048);
+  --today-shadow: rgba(32, 160, 96, 0.4);
+  --today-holiday-bg: linear-gradient(135deg, #d04850, #a03038);
+  --today-holiday-shadow: rgba(208, 72, 80, 0.4);
+  --today-forecast-bg: rgba(32, 160, 96, 0.1);
+  --today-forecast-border: rgba(32, 160, 96, 0.2);
+  --border: #1a3828;
+  --divider: linear-gradient(180deg, transparent 5%, #1a3828 30%, #287848 50%, #1a3828 70%, transparent 95%);
+  --card-bg: rgba(255, 255, 255, 0.025);
+  --time-glow: rgba(50, 200, 120, 0.15);
+  --chime-dim: #1a4030;
+  --chime-active: #50c898;
+  --chime-pulse: #70e8b0;
+  --overlay-bg: rgba(6, 15, 10, 0.9);
+  --detail-color: #508068;
+  --precip-color: #3898a0;
+  --forecast-sun: #e07060;
+  --forecast-sat: #40b888;
+}
+
+[data-theme="amber"] {
+  --bg: #120c06;
+  --bg-clock: linear-gradient(160deg, #1a1208 0%, #241a0c 100%);
+  --bg-weather: linear-gradient(160deg, #100a04 0%, #181008 100%);
+  --text-bright: #fff8f0;
+  --text-primary: #e8d8c0;
+  --text-mid: #c0a880;
+  --text-muted: #a89070;
+  --text-dim: #887858;
+  --text-faint: #686048;
+  --text-other: #302818;
+  --accent-red: #ff7050;
+  --accent-blue: #e0a840;
+  --accent-red-dim: #c06850;
+  --accent-blue-dim: #a88838;
+  --accent-red-warm: #f08050;
+  --accent-blue-cool: #d0a040;
+  --today-bg: linear-gradient(135deg, #d08820, #a06810);
+  --today-shadow: rgba(208, 136, 32, 0.4);
+  --today-holiday-bg: linear-gradient(135deg, #d04838, #a03028);
+  --today-holiday-shadow: rgba(208, 72, 56, 0.4);
+  --today-forecast-bg: rgba(208, 136, 32, 0.1);
+  --today-forecast-border: rgba(208, 136, 32, 0.2);
+  --border: #382810;
+  --divider: linear-gradient(180deg, transparent 5%, #382810 30%, #584020 50%, #382810 70%, transparent 95%);
+  --card-bg: rgba(255, 200, 100, 0.025);
+  --time-glow: rgba(220, 160, 50, 0.15);
+  --chime-dim: #3a2810;
+  --chime-active: #e0a840;
+  --chime-pulse: #f0c060;
+  --overlay-bg: rgba(18, 12, 6, 0.9);
+  --detail-color: #807050;
+  --precip-color: #a08840;
+  --forecast-sun: #e07050;
+  --forecast-sat: #d0a040;
+}
+
+[data-theme="sakura"] {
+  --bg: #10060c;
+  --bg-clock: linear-gradient(160deg, #180a14 0%, #20101c 100%);
+  --bg-weather: linear-gradient(160deg, #0e060a 0%, #140c12 100%);
+  --text-bright: #fff0f5;
+  --text-primary: #e8c8d8;
+  --text-mid: #c098b0;
+  --text-muted: #a88098;
+  --text-dim: #886878;
+  --text-faint: #685060;
+  --text-other: #301828;
+  --accent-red: #ff6888;
+  --accent-blue: #c080d0;
+  --accent-red-dim: #c06078;
+  --accent-blue-dim: #9068a0;
+  --accent-red-warm: #f07080;
+  --accent-blue-cool: #b078c0;
+  --today-bg: linear-gradient(135deg, #d05888, #a04068);
+  --today-shadow: rgba(208, 88, 136, 0.4);
+  --today-holiday-bg: linear-gradient(135deg, #e04060, #b03048);
+  --today-holiday-shadow: rgba(224, 64, 96, 0.4);
+  --today-forecast-bg: rgba(208, 88, 136, 0.1);
+  --today-forecast-border: rgba(208, 88, 136, 0.2);
+  --border: #381828;
+  --divider: linear-gradient(180deg, transparent 5%, #381828 30%, #583050 50%, #381828 70%, transparent 95%);
+  --card-bg: rgba(255, 200, 230, 0.025);
+  --time-glow: rgba(220, 100, 150, 0.15);
+  --chime-dim: #3a1828;
+  --chime-active: #d080a0;
+  --chime-pulse: #f0a0c0;
+  --overlay-bg: rgba(16, 6, 12, 0.9);
+  --detail-color: #805868;
+  --precip-color: #a070a0;
+  --forecast-sun: #e06878;
+  --forecast-sat: #b078c0;
+}
+
+[data-theme="mono"] {
+  --bg: #000000;
+  --bg-clock: linear-gradient(160deg, #080808 0%, #0c0c0c 100%);
+  --bg-weather: linear-gradient(160deg, #050505 0%, #0a0a0a 100%);
+  --text-bright: #ffffff;
+  --text-primary: #d0d0d0;
+  --text-mid: #a0a0a0;
+  --text-muted: #888888;
+  --text-dim: #707070;
+  --text-faint: #505050;
+  --text-other: #1a1a1a;
+  --accent-red: #e0e0e0;
+  --accent-blue: #b0b0b0;
+  --accent-red-dim: #909090;
+  --accent-blue-dim: #707070;
+  --accent-red-warm: #d0d0d0;
+  --accent-blue-cool: #a0a0a0;
+  --today-bg: linear-gradient(135deg, #606060, #404040);
+  --today-shadow: rgba(128, 128, 128, 0.4);
+  --today-holiday-bg: linear-gradient(135deg, #808080, #505050);
+  --today-holiday-shadow: rgba(128, 128, 128, 0.4);
+  --today-forecast-bg: rgba(255, 255, 255, 0.06);
+  --today-forecast-border: rgba(255, 255, 255, 0.12);
+  --border: #222222;
+  --divider: linear-gradient(180deg, transparent 5%, #222222 30%, #404040 50%, #222222 70%, transparent 95%);
+  --card-bg: rgba(255, 255, 255, 0.03);
+  --time-glow: rgba(255, 255, 255, 0.08);
+  --chime-dim: #303030;
+  --chime-active: #c0c0c0;
+  --chime-pulse: #ffffff;
+  --overlay-bg: rgba(0, 0, 0, 0.9);
+  --detail-color: #606060;
+  --precip-color: #808080;
+  --forecast-sun: #c0c0c0;
+  --forecast-sat: #a0a0a0;
+}
+
 html, body {
   width: 1920px;
   height: 540px;
   overflow: hidden;
   font-family: "Noto Sans JP", "Hiragino Sans", "Yu Gothic UI", "Meiryo", sans-serif;
-  background: #080c15;
-  color: #d0d8e8;
+  background: var(--bg);
+  color: var(--text-primary);
   -webkit-font-smoothing: antialiased;
 }
 
@@ -19,11 +205,34 @@ body {
   align-items: stretch;
 }
 
+/* ===== Theme Button ===== */
+.theme-btn {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 50;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--text-muted);
+  font-size: 13px;
+  font-weight: 500;
+  padding: 6px 14px;
+  border-radius: 16px;
+  cursor: pointer;
+  letter-spacing: 1px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.theme-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: var(--text-bright);
+}
+
 /* ===== Divider ===== */
 .divider {
   width: 2px;
   flex-shrink: 0;
-  background: linear-gradient(180deg, transparent 5%, #1e3050 30%, #305078 50%, #1e3050 70%, transparent 95%);
+  background: var(--divider);
 }
 
 /* ===== Clock ===== */
@@ -35,13 +244,13 @@ body {
   justify-content: center;
   align-items: center;
   padding: 20px 32px;
-  background: linear-gradient(160deg, #0c1220 0%, #101828 100%);
+  background: var(--bg-clock);
 }
 
 .clock-year {
   font-size: 26px;
   font-weight: 400;
-  color: #7888a8;
+  color: var(--text-dim);
   letter-spacing: 4px;
 }
 
@@ -49,7 +258,7 @@ body {
   font-size: 80px;
   font-weight: 700;
   line-height: 1.15;
-  color: #ffffff;
+  color: var(--text-bright);
   display: flex;
   align-items: baseline;
   justify-content: center;
@@ -65,7 +274,7 @@ body {
 .clock-monthday .label {
   font-size: 40px;
   font-weight: 500;
-  color: #7888a8;
+  color: var(--text-dim);
   margin: 0 2px;
   transform: translateY(-0.1em);
   display: inline-block;
@@ -78,9 +287,9 @@ body {
   letter-spacing: 6px;
 }
 
-.clock-weekday.sunday { color: #ff6070; }
-.clock-weekday.saturday { color: #5a9af5; }
-.clock-weekday.weekday { color: #8898b4; }
+.clock-weekday.sunday { color: var(--accent-red); }
+.clock-weekday.saturday { color: var(--accent-blue); }
+.clock-weekday.weekday { color: var(--text-muted); }
 
 .clock-time-area {
   text-align: center;
@@ -91,8 +300,8 @@ body {
   font-size: 156px;
   font-weight: 700;
   line-height: 1;
-  color: #ffffff;
-  text-shadow: 0 0 40px rgba(70, 120, 255, 0.15);
+  color: var(--text-bright);
+  text-shadow: 0 0 40px var(--time-glow);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -120,7 +329,7 @@ body {
 .clock-seconds {
   font-size: 40px;
   font-weight: 300;
-  color: #506888;
+  color: var(--text-faint);
   margin-top: 4px;
   display: flex;
   justify-content: center;
@@ -136,19 +345,19 @@ body {
 .chime-indicator {
   margin-top: 10px;
   font-size: 14px;
-  color: #2a3a5a;
+  color: var(--chime-dim);
   letter-spacing: 1px;
   height: 20px;
 }
 
 .chime-indicator.active {
-  color: #5a9af5;
+  color: var(--chime-active);
   animation: chimePulse 2s ease-out;
 }
 
 @keyframes chimePulse {
-  0% { color: #8ab4ff; }
-  100% { color: #2a3a5a; }
+  0% { color: var(--chime-pulse); }
+  100% { color: var(--chime-dim); }
 }
 
 /* ===== Calendars ===== */
@@ -170,24 +379,24 @@ body {
   align-items: baseline;
   margin-bottom: 8px;
   padding-bottom: 8px;
-  border-bottom: 2px solid #1a2540;
+  border-bottom: 2px solid var(--border);
 }
 
 .calendar-title {
   font-size: 30px;
   font-weight: 700;
-  color: #ffffff;
+  color: var(--text-bright);
   letter-spacing: 2px;
 }
 
 .calendar-title-sub {
   font-size: 16px;
   font-weight: 400;
-  color: #506888;
+  color: var(--text-faint);
   margin-left: 12px;
 }
 
-.calendar-panel.next-month .calendar-title { color: #8898b4; }
+.calendar-panel.next-month .calendar-title { color: var(--text-muted); }
 
 .calendar-grid {
   display: flex;
@@ -207,7 +416,7 @@ body {
   align-items: center;
   font-size: 22px;
   font-weight: 500;
-  color: #a0b0cc;
+  color: var(--text-mid);
   position: relative;
 }
 
@@ -215,20 +424,20 @@ body {
   font-size: 15px;
   font-weight: 700;
   letter-spacing: 3px;
-  color: #506888;
+  color: var(--text-faint);
 }
 
-.calendar-cell.header.sun { color: #c06070; }
-.calendar-cell.header.sat { color: #4878b8; }
+.calendar-cell.header.sun { color: var(--accent-red-dim); }
+.calendar-cell.header.sat { color: var(--accent-blue-dim); }
 
-.calendar-cell.sun { color: #ff6070; }
-.calendar-cell.sat { color: #5a9af5; }
-.calendar-cell.other-month { color: #202838; }
-.calendar-cell.holiday { color: #ff6070; }
+.calendar-cell.sun { color: var(--accent-red); }
+.calendar-cell.sat { color: var(--accent-blue); }
+.calendar-cell.other-month { color: var(--text-other); }
+.calendar-cell.holiday { color: var(--accent-red); }
 
 .calendar-cell.today {
   font-weight: 800;
-  color: #ffffff;
+  color: var(--text-bright);
 }
 
 .calendar-cell.today::before {
@@ -237,8 +446,8 @@ body {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #3060f0, #2040b0);
-  box-shadow: 0 0 20px rgba(48, 96, 240, 0.4);
+  background: var(--today-bg);
+  box-shadow: 0 0 20px var(--today-shadow);
   z-index: 0;
 }
 
@@ -248,8 +457,8 @@ body {
 }
 
 .calendar-cell.today.holiday::before {
-  background: linear-gradient(135deg, #e03858, #a82040);
-  box-shadow: 0 0 20px rgba(224, 56, 88, 0.4);
+  background: var(--today-holiday-bg);
+  box-shadow: 0 0 20px var(--today-holiday-shadow);
 }
 
 /* ===== Weather ===== */
@@ -258,7 +467,7 @@ body {
   display: flex;
   flex-direction: column;
   padding: 20px 28px;
-  background: linear-gradient(160deg, #0a1018 0%, #0e1520 100%);
+  background: var(--bg-weather);
   min-width: 0;
 }
 
@@ -267,19 +476,19 @@ body {
   align-items: baseline;
   margin-bottom: 10px;
   padding-bottom: 8px;
-  border-bottom: 2px solid #1a2540;
+  border-bottom: 2px solid var(--border);
 }
 
 .weather-header-title {
   font-size: 18px;
   font-weight: 700;
-  color: #7888a8;
+  color: var(--text-dim);
   letter-spacing: 3px;
 }
 
 .weather-header-location {
   font-size: 14px;
-  color: #506888;
+  color: var(--text-faint);
   margin-left: 14px;
 }
 
@@ -306,7 +515,7 @@ body {
 .weather-temp-main {
   font-size: 72px;
   font-weight: 200;
-  color: #ffffff;
+  color: var(--text-bright);
   line-height: 1;
   letter-spacing: -2px;
 }
@@ -314,14 +523,14 @@ body {
 .weather-temp-main .unit {
   font-size: 32px;
   font-weight: 300;
-  color: #7888a8;
+  color: var(--text-dim);
   vertical-align: top;
 }
 
 .weather-condition {
   font-size: 24px;
   font-weight: 500;
-  color: #a0b0cc;
+  color: var(--text-mid);
   margin-top: 4px;
 }
 
@@ -333,11 +542,11 @@ body {
 
 .weather-detail-item {
   font-size: 16px;
-  color: #607090;
+  color: var(--detail-color);
 }
 
 .weather-detail-item .val {
-  color: #8898b4;
+  color: var(--text-muted);
   font-weight: 500;
 }
 
@@ -356,28 +565,28 @@ body {
   justify-content: center;
   padding: 8px 4px;
   border-radius: 10px;
-  background: rgba(255, 255, 255, 0.025);
+  background: var(--card-bg);
   gap: 3px;
 }
 
 .forecast-day.today-forecast {
-  background: rgba(48, 96, 240, 0.1);
-  border: 1px solid rgba(48, 96, 240, 0.2);
+  background: var(--today-forecast-bg);
+  border: 1px solid var(--today-forecast-border);
 }
 
 .forecast-day .f-weekday {
   font-size: 16px;
   font-weight: 700;
-  color: #7888a8;
+  color: var(--text-dim);
   letter-spacing: 1px;
 }
 
-.forecast-day .f-weekday.sun { color: #e06070; }
-.forecast-day .f-weekday.sat { color: #5090e0; }
+.forecast-day .f-weekday.sun { color: var(--forecast-sun); }
+.forecast-day .f-weekday.sat { color: var(--forecast-sat); }
 
 .forecast-day .f-date {
   font-size: 13px;
-  color: #506888;
+  color: var(--text-faint);
 }
 
 .forecast-day .f-icon {
@@ -395,21 +604,21 @@ body {
 .forecast-day .f-temp {
   font-size: 18px;
   font-weight: 500;
-  color: #a0b0cc;
+  color: var(--text-mid);
 }
 
 .forecast-day .f-temp .hi {
-  color: #f07060;
+  color: var(--accent-red-warm);
   font-weight: 700;
 }
 
 .forecast-day .f-temp .lo {
-  color: #5090e0;
+  color: var(--accent-blue-cool);
 }
 
 .forecast-day .f-precip {
   font-size: 13px;
-  color: #4878b0;
+  color: var(--precip-color);
   font-weight: 500;
 }
 
@@ -418,7 +627,7 @@ body {
   flex: 1;
   align-items: center;
   justify-content: center;
-  color: #506888;
+  color: var(--text-faint);
   font-size: 18px;
 }
 
@@ -426,7 +635,7 @@ body {
 .audio-unlock {
   position: fixed;
   top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(8, 12, 21, 0.9);
+  background: var(--overlay-bg);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -436,14 +645,14 @@ body {
 
 .audio-unlock-inner {
   text-align: center;
-  color: #8898b4;
+  color: var(--text-muted);
   font-size: 24px;
   line-height: 1.6;
 }
 
 .audio-unlock-inner .tap-text {
   font-size: 40px;
-  color: #5a9af5;
+  color: var(--accent-blue);
   font-weight: 700;
   margin-bottom: 10px;
   letter-spacing: 4px;
