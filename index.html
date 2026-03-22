@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=540, initial-scale=1.0, user-scalable=no">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <title>Digital Signage</title>
+</head>
+<body>
+  <!-- Audio unlock overlay -->
+  <div class="audio-unlock" id="audio-unlock">
+    <div class="audio-unlock-inner">
+      <div class="tap-text">TAP TO START</div>
+      <div>画面をタップして開始</div>
+    </div>
+  </div>
+
+  <!-- Clock -->
+  <div class="clock-section">
+    <div class="clock-year" id="clock-year"></div>
+    <div class="clock-monthday" id="clock-monthday"></div>
+    <div class="clock-weekday" id="clock-weekday"></div>
+    <div class="clock-time-area">
+      <div class="clock-time" id="clock-time"></div>
+      <div class="clock-seconds" id="clock-seconds"></div>
+    </div>
+    <div class="chime-indicator" id="chime-indicator"></div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Calendars -->
+  <div class="calendars-area">
+    <div class="calendar-panel current-month" id="cal-current"></div>
+    <div class="calendar-panel next-month" id="cal-next"></div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Weather -->
+  <div class="weather-section" id="weather-section">
+    <div class="weather-header">
+      <div class="weather-header-title">WEATHER</div>
+      <div class="weather-header-location" id="weather-location"></div>
+    </div>
+    <div class="weather-message" id="weather-loading">天気情報を取得中...</div>
+  </div>
+
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>
