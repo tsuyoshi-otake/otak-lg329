@@ -111,6 +111,8 @@ body {
   text-align: center;
   transition: opacity 0.3s;
   transform: translateY(-0.08em);
+  font-size: 0.65em;
+  margin: 0 0.15em;
 }
 
 .clock-time .colon.blink { opacity: 0.15; }
