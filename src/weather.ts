@@ -1,43 +1,21 @@
 import { CONFIG, WEEKDAYS } from "./config";
+import { weatherIcon } from "./weather-icons";
 
-interface WmoEntry {
-  icon: string;
-  desc: string;
-}
-
-const WMO_CODES: Record<number, WmoEntry> = {
-  0: { icon: "\u2600\uFE0F", desc: "快晴" },
-  1: { icon: "\u26C5", desc: "晴れ" },
-  2: { icon: "\u26C5", desc: "曇りがち" },
-  3: { icon: "\u2601\uFE0F", desc: "曇り" },
-  45: { icon: "\u{1F32B}\uFE0F", desc: "霧" },
-  48: { icon: "\u{1F32B}\uFE0F", desc: "濃霧" },
-  51: { icon: "\u{1F326}\uFE0F", desc: "小雨" },
-  53: { icon: "\u{1F326}\uFE0F", desc: "小雨" },
-  55: { icon: "\u{1F327}\uFE0F", desc: "小雨" },
-  56: { icon: "\u2744\uFE0F", desc: "凍雨" },
-  57: { icon: "\u2744\uFE0F", desc: "凍雨" },
-  61: { icon: "\u{1F327}\uFE0F", desc: "小雨" },
-  63: { icon: "\u{1F327}\uFE0F", desc: "雨" },
-  65: { icon: "\u{1F327}\uFE0F", desc: "大雨" },
-  66: { icon: "\u2744\uFE0F", desc: "凍雨" },
-  67: { icon: "\u2744\uFE0F", desc: "大凍雨" },
-  71: { icon: "\u{1F328}\uFE0F", desc: "小雪" },
-  73: { icon: "\u{1F328}\uFE0F", desc: "雪" },
-  75: { icon: "\u{1F328}\uFE0F", desc: "大雪" },
-  77: { icon: "\u{1F328}\uFE0F", desc: "あられ" },
-  80: { icon: "\u{1F327}\uFE0F", desc: "にわか雨" },
-  81: { icon: "\u{1F327}\uFE0F", desc: "にわか雨" },
-  82: { icon: "\u{1F327}\uFE0F", desc: "豪雨" },
-  85: { icon: "\u{1F328}\uFE0F", desc: "にわか雪" },
-  86: { icon: "\u{1F328}\uFE0F", desc: "大雪" },
-  95: { icon: "\u26C8\uFE0F", desc: "雷雨" },
-  96: { icon: "\u26C8\uFE0F", desc: "雷雨・雹" },
-  99: { icon: "\u26C8\uFE0F", desc: "雷雨・大雹" },
+const WMO_DESC: Record<number, string> = {
+  0: "快晴", 1: "晴れ", 2: "曇りがち", 3: "曇り",
+  45: "霧", 48: "濃霧",
+  51: "小雨", 53: "小雨", 55: "小雨",
+  56: "凍雨", 57: "凍雨",
+  61: "小雨", 63: "雨", 65: "大雨",
+  66: "凍雨", 67: "大凍雨",
+  71: "小雪", 73: "雪", 75: "大雪", 77: "あられ",
+  80: "にわか雨", 81: "にわか雨", 82: "豪雨",
+  85: "にわか雪", 86: "大雪",
+  95: "雷雨", 96: "雷雨・雹", 99: "雷雨・大雹",
 };
 
-function getWmo(code: number): WmoEntry {
-  return WMO_CODES[code] || { icon: "\u2601\uFE0F", desc: "--" };
+function getDesc(code: number): string {
+  return WMO_DESC[code] || "--";
 }
 
 interface WeatherResponse {
@@ -73,7 +51,6 @@ function render(): void {
   const cur = weatherData.current;
   const daily = weatherData.daily;
   const now = new Date();
-  const wmo = getWmo(cur.weather_code);
 
   const locationEl = document.getElementById("weather-location");
   if (locationEl) locationEl.textContent = CONFIG.locationName;
@@ -83,10 +60,10 @@ function render(): void {
 
   // Current
   html += `<div class="weather-current">
-    <div class="weather-icon-large">${wmo.icon}</div>
+    <div class="weather-icon-large">${weatherIcon(cur.weather_code, 80)}</div>
     <div>
       <div class="weather-temp-main">${Math.round(cur.temperature_2m)}<span class="unit">\u00B0C</span></div>
-      <div class="weather-condition">${wmo.desc}</div>
+      <div class="weather-condition">${getDesc(cur.weather_code)}</div>
       <div class="weather-details">
         <div class="weather-detail-item">湿度 <span class="val">${cur.relative_humidity_2m}%</span></div>
         <div class="weather-detail-item">風速 <span class="val">${Math.round(cur.wind_speed_10m)}km/h</span></div>
@@ -104,14 +81,13 @@ function render(): void {
       dDate.getFullYear() === now.getFullYear() &&
       dDate.getMonth() === now.getMonth() &&
       dDate.getDate() === now.getDate();
-    const dwmo = getWmo(daily.weather_code[i]);
     const dowClass =
       "f-weekday" + (ddow === 0 ? " sun" : "") + (ddow === 6 ? " sat" : "");
 
     html += `<div class="forecast-day${isToday ? " today-forecast" : ""}">
       <div class="${dowClass}">${WEEKDAYS[ddow]}</div>
       <div class="f-date">${dDate.getMonth() + 1}/${dDate.getDate()}</div>
-      <div class="f-icon">${dwmo.icon}</div>
+      <div class="f-icon">${weatherIcon(daily.weather_code[i], 36)}</div>
       <div class="f-temp"><span class="hi">${Math.round(daily.temperature_2m_max[i])}</span> / <span class="lo">${Math.round(daily.temperature_2m_min[i])}</span></div>
       ${daily.precipitation_probability_max[i] != null ? `<div class="f-precip">${daily.precipitation_probability_max[i]}%</div>` : ""}
     </div>`;
